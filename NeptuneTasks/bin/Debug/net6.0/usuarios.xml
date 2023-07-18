@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUsuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Usuario>
+    <Id>1</Id>
+    <Nome>Luana</Nome>
+    <Senha>Salmito</Senha>
+    <Admin>true</Admin>
+  </Usuario>
+</ArrayOfUsuario>

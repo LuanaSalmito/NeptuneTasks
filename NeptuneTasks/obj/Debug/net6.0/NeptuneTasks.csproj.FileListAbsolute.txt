@@ -1,0 +1,15 @@
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.csproj.AssemblyReference.cache
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.AssemblyInfoInputs.cache
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.AssemblyInfo.cs
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.csproj.CoreCompileInputs.cache
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\bin\Debug\net6.0\NeptuneTasks.exe
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\bin\Debug\net6.0\NeptuneTasks.deps.json
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\bin\Debug\net6.0\NeptuneTasks.runtimeconfig.json
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\bin\Debug\net6.0\NeptuneTasks.dll
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\bin\Debug\net6.0\NeptuneTasks.pdb
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.dll
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\refint\NeptuneTasks.dll
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.pdb
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\NeptuneTasks.genruntimeconfig.cache
+C:\Users\Luana Salmito\Source\Repos\LuanaSalmito\NeptuneTasks\NeptuneTasks\obj\Debug\net6.0\ref\NeptuneTasks.dll
