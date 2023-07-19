@@ -18,4 +18,16 @@
     <Senha>silveira</Senha>
     <Admin>true</Admin>
   </Usuario>
+  <Usuario>
+    <Id>4</Id>
+    <Nome>Luana</Nome>
+    <Senha>Luana</Senha>
+    <Admin>false</Admin>
+  </Usuario>
+  <Usuario>
+    <Id>5</Id>
+    <Nome>Marilia</Nome>
+    <Senha>tads</Senha>
+    <Admin>true</Admin>
+  </Usuario>
 </ArrayOfUsuario>

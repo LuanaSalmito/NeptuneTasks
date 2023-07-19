@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Xml.Linq;
 
-namespace NeptuneTasks
+namespace Teste
+
 {
     public class Program
     {
@@ -11,9 +12,10 @@ namespace NeptuneTasks
         {
             //Necessáio para carregar a persistência dos usuários.
             NUsuario.Abrir();
+            
             //
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("\n       Bem-vindo(a) ao NeptuneTasks!\n");
+            Console.WriteLine("\nBem-vindo(a) ao NeptuneTasks!\n");
             int operacao = 100;
             //Loop para sempre escutar e realizar as chamadas demandadas.
             while (operacao != 0)
@@ -36,15 +38,9 @@ namespace NeptuneTasks
                             operacao = MenuAdmin();
                             switch (operacao)
                             {
-
-
-                                
+                                case 1: 
                                 case 99: SairSistema(); break;
                                 case 98: AtualizarConta(usuarioLogado); break;
-
-
-                                
-                                
                             }
                         }
                         else
@@ -52,11 +48,11 @@ namespace NeptuneTasks
                             operacao = MenuComum();
                             switch (operacao)
                             {
-                               
-                                
+
+
                                 case 99: SairSistema(); break;
-                                case 98:AtualizarConta(usuarioLogado); break;
-                                
+                                case 98: AtualizarConta(usuarioLogado); break;
+
                             }
                         }
                     }
@@ -66,27 +62,28 @@ namespace NeptuneTasks
                     Console.WriteLine(erro.Message);
                 }
             }
-            Console.WriteLine("Encerramos por aqui, até logo!");
+            Console.WriteLine("********************************************");
+            Console.WriteLine("|      Encerramos por aqui, obrigado!       |");
+            Console.WriteLine("********************************************");
             //Necessário para salvar perisistências dos usuários.
             NUsuario.Salvar();
+            
             //
         }
-        
+
         public static int MenuVisitante()
         {
             //Primeiro menu do sistema.
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|                 OPÇÕES                   |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|  1. Criar conta                          |");
-            Console.WriteLine("|  2. Fazer login                          |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|  00. Sair                                |");
-            Console.WriteLine("********************************************");
+            Console.WriteLine("--------- Opções --------");
+            Console.WriteLine("| 01 - Criar conta       |");
+            Console.WriteLine("| 02 - Entrar no Sistema |");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("| 00 - Fim               |");
+            Console.WriteLine("--------------------------");
             Console.Write("\nOpção: ");
-            return int.Parse(Console.ReadLine()); ;
+            return int.Parse(Console.ReadLine());
         }
         public static int MenuAdmin()
         {
@@ -110,64 +107,62 @@ namespace NeptuneTasks
             Console.WriteLine("|                                          |");
             Console.WriteLine("********************************************");
             Console.Write("\nOpção: ");
-            return int.Parse(Console.ReadLine()); ;
+            return int.Parse(Console.ReadLine());
         }
-       
+
         public static int MenuComum()
         {
             //Menu para usuários que ainda não são líderes.
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|              MENU INICIAL                |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|  Escolha a operação desejada:            |");
-            Console.WriteLine("|                                          |");
-            Console.WriteLine("|  1. Área de tarefas pessoais             |");
-            Console.WriteLine("|  2. Área de tarefas de trabalho          |");
-            Console.WriteLine("|  5. Visualizar sua equipe                |");
-            Console.WriteLine("|  5. Visualizar projeto da equipe         |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|  98. Atualizar conta                     |");
-            Console.WriteLine("|  99. Sair                                |");
-            Console.WriteLine("|                                          |");
-            Console.WriteLine("********************************************");
+            Console.WriteLine("------ Tarefas pessoais ------");
+            Console.WriteLine("| 01 - Listar                |");
+            Console.WriteLine("| 02 - Inserir               |");
+            Console.WriteLine("| 03 - Atualizar             |");
+            Console.WriteLine("| 04 - Excluir               |");
+            Console.WriteLine("|                            |");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("------ Área de trabalho ------");
+            Console.WriteLine("| 05 - Tarefas de trabalho   |");
+            Console.WriteLine("| 06 - Descrição da equipe   |");
+            Console.WriteLine("| 07 - Descrição do projeto  |");
+            Console.WriteLine("| 08 - Excluir               |");
+            Console.WriteLine("------------------------------");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("| 98 - Atualizar conta       |");
+            Console.WriteLine("| 99 - Sair                  |");
+            Console.WriteLine("| 00 - Fechar                |");
+            Console.WriteLine("------------------------------");
             Console.Write("\nOpção: ");
             return int.Parse(Console.ReadLine());
         }
 
 
-        
+
         public static void CriarConta()
         {
             //Método para criar uma conta, e manda os parâmentro para outra função que insere em um XML.
 
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("                                          ");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|        Criar conta no NeptuneTask        |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("| * Informe o nome de usuário desejado:    |");
+            Console.WriteLine("Nova conta no sistema");
+            Console.Write("Informe o nome: ");
             string nome = Console.ReadLine();
-            Console.WriteLine("| * Informe a senha:                       |");
+            Console.Write("Informe a senha: ");
             string senha = Console.ReadLine();
-            Console.WriteLine("| * Informe se deseja ser líder: (S/N):    |");
+            Console.Write("Informe a se deseja ser administrador: ");
             bool admin = obterOpcaoAdm();
-            Console.WriteLine("********************************************");
-         
             Usuario u = new Usuario { Nome = nome, Senha = senha, Admin = admin };
             NUsuario.Inserir(u);
-            Console.WriteLine("                                          ");
             Console.WriteLine("Conta inserida com sucesso");
-            Console.WriteLine("                                          ");
             NUsuario.Salvar();
         }
 
-    
+
         public static bool obterOpcaoAdm()
         {
             //Obtem a resposta do usuário caso ele deseje ser líder. E manda para a função na qual 
             //E manda para a função na qual chama ela.
+
+            Console.WriteLine("Deseja ser um administrador?(S/N): ");
             string resposta = Console.ReadLine();
 
             if (resposta.ToUpper() == "S")
@@ -182,16 +177,15 @@ namespace NeptuneTasks
             }
         }
 
-        public static void ExcluirConta(Usuario c)
-        { 
+        public static int ExcluirConta(Usuario c)
+        {
             //Função criada para excluir uma conta.
 
             Console.WriteLine("------- Danger Zone --------");
-            Console.WriteLine("| 01 - Mudar nome          |");
-            Console.WriteLine("| 02 - Trocar senha        |");
-            Console.WriteLine("| 03 - Tornar-se líder     |");
+            Console.WriteLine("| 01 - Apagar conta        |");
             Console.WriteLine("| 00 - Voltar menu incial  |");
             Console.WriteLine("----------------------------");
+            return int.Parse(Console.ReadLine());
 
         }
 
@@ -202,14 +196,12 @@ namespace NeptuneTasks
             //Usa uma função que "universaliza" o caminho do arquivo para facilitar a mudança dos dados."
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("|                                          |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|           Atualização de conta           |");
-            Console.WriteLine("********************************************");
-            Console.WriteLine("|  1. Mudar nome                           |");
-            Console.WriteLine("|  2. Mudar senha                          |");
-            Console.WriteLine("|  2. Tornar-se líder                      |");
-            Console.WriteLine("********************************************");
+            Console.WriteLine("--- Atualização da conta ---");
+            Console.WriteLine("| 01 - Mudar nome          |");
+            Console.WriteLine("| 02 - Trocar senha        |");
+            Console.WriteLine("| 03 - Tornar-se líder     |");
+            Console.WriteLine("| 00 - Voltar menu incial  |");
+            Console.WriteLine("----------------------------");
             Console.Write("\nOpção: ");
             int op = int.Parse(Console.ReadLine());
 
@@ -220,7 +212,7 @@ namespace NeptuneTasks
 
             XDocument xmlDoc = XDocument.Load(caminhoArquivoXML);
 
-     
+
             XElement usuarioElement = xmlDoc.Descendants("Usuario").FirstOrDefault(e => e.Element("Id").Value == c.Id.ToString());
 
             if (usuarioElement != null)
@@ -282,16 +274,11 @@ namespace NeptuneTasks
                 if (usuarioLogado == null)
                     Console.WriteLine("Usuário ou senha incorretos");
                 if (usuarioLogado.Admin == true)
-                {
-                    Console.WriteLine("                                                                ");
-                    Console.WriteLine("         Bem-vindo(a), líder " + usuarioLogado.Nome + ".        ");
-                }
+                    Console.WriteLine("Bem-vindo(a), líder " + usuarioLogado.Nome + ".");
                 else
-                {
-                    Console.WriteLine("                                                     ");
-                    Console.WriteLine("        Bem-vindo(a), " + usuarioLogado.Nome + ".    ");
-                }
-            } catch(Exception ex) 
+                    Console.WriteLine("Bem-vindo(a), " + usuarioLogado.Nome + ".");
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Ops, algo deu errado.");
             }
@@ -304,45 +291,28 @@ namespace NeptuneTasks
         }
 
 
-    }
-}
+        {
 
+ 
 
-/*Console.ForegroundColor = ConsoleColor.DarkCyan;
+       /* Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("********************************************");
-            Console.WriteLine("|              MENU INICIAL                |");
+            Console.WriteLine("|              MENU DO LÍDER               |");
             Console.WriteLine("********************************************");
             Console.WriteLine("|  Escolha a operação desejada:            |");
-            Console.WriteLine("|                                          |");
-            Console.WriteLine("|  1. Área de tarefas pessoais             |");
-            Console.WriteLine("|  2. Área de tarefas de trabalho          |");
-            Console.WriteLine("|  5. Visualizar sua equipe                |");
-            Console.WriteLine("|  5. Visualizar projeto da equipe         |");
+            Console.WriteLine("|                                          |"); 
+            Console.WriteLine("|  1. Adicionar nova tarefa                |");
+            Console.WriteLine("|  2. Editar tarefa existente              |");
+            Console.WriteLine("|  3. Ver informações de uma tarefa        |");
+            Console.WriteLine("|  4. Ordernar tarefas por prioridade      |");
+            Console.WriteLine("|  5. Área de equipes                      |");
+            Console.WriteLine("|  5. Área de projetos                     |");
             Console.WriteLine("********************************************");
             Console.WriteLine("|  98. Atualizar conta                     |");
             Console.WriteLine("|  99. Sair                                |");
-            Console.WriteLine("|  00. Fechar                              |");
+            Console.WriteLine("|                                          |");
             Console.WriteLine("********************************************");
-*/
-
-
-/*Console.ForegroundColor = ConsoleColor.DarkGreen;
-Console.WriteLine("------ Tarefas pessoais ------");
-Console.WriteLine("| 01 - Listar                |");
-Console.WriteLine("| 02 - Inserir               |");
-Console.WriteLine("| 03 - Atualizar             |");
-Console.WriteLine("| 04 - Excluir               |");
-Console.WriteLine("|                            |");
-Console.ForegroundColor = ConsoleColor.DarkCyan;
-Console.WriteLine("------ Área de trabalho ------");
-Console.WriteLine("| 05 - Tarefas de trabalho   |");
-Console.WriteLine("| 06 - Descrição da equipe   |");
-Console.WriteLine("| 07 - Descrição do projeto  |");
-Console.WriteLine("| 08 - Excluir               |");
-Console.WriteLine("------------------------------");
-Console.ForegroundColor = ConsoleColor.DarkGreen;
-Console.WriteLine("| 98 - Atualizar conta       |");
-Console.WriteLine("| 99 - Sair                  |");
-Console.WriteLine("| 00 - Fechar                |");
-Console.WriteLine("------------------------------");
-Console.Write("\nOpção: ");*/
+            Console.Write("\nOpção: ");
+            return int.Parse(Console.ReadLine());
+    }
+}
