@@ -6,4 +6,16 @@
     <Senha>Salmito</Senha>
     <Admin>true</Admin>
   </Usuario>
+  <Usuario>
+    <Id>2</Id>
+    <Nome>Gilbert</Nome>
+    <Senha>Silva</Senha>
+    <Admin>true</Admin>
+  </Usuario>
+  <Usuario>
+    <Id>3</Id>
+    <Nome>Rafael</Nome>
+    <Senha>silveira</Senha>
+    <Admin>true</Admin>
+  </Usuario>
 </ArrayOfUsuario>

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luana Salmito\\Source\\Repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj": {}
+    "C:\\Users\\Luana Salmito\\source\\repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luana Salmito\\Source\\Repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj": {
+    "C:\\Users\\Luana Salmito\\source\\repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luana Salmito\\Source\\Repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj",
+        "projectUniqueName": "C:\\Users\\Luana Salmito\\source\\repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj",
         "projectName": "NeptuneTasks",
-        "projectPath": "C:\\Users\\Luana Salmito\\Source\\Repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj",
+        "projectPath": "C:\\Users\\Luana Salmito\\source\\repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\NeptuneTasks.csproj",
         "packagesPath": "C:\\Users\\Luana Salmito\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Luana Salmito\\Source\\Repos\\LuanaSalmito\\NeptuneTasks\\NeptuneTasks\\obj\\",
         "projectStyle": "PackageReference",

@@ -37,8 +37,8 @@ namespace NeptuneTasks
                             switch (operacao)
                             {
 
-                                
 
+                                
                                 case 99: SairSistema(); break;
                                 case 98: AtualizarConta(usuarioLogado); break;
 
@@ -110,6 +110,7 @@ namespace NeptuneTasks
             Console.Write("\nOpção: ");
             return int.Parse(Console.ReadLine());
         }
+       
         public static int MenuComum()
         {
             //Menu para usuários que ainda não são líderes.
