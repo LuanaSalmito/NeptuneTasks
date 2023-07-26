@@ -42,4 +42,10 @@
     <Senha>tads</Senha>
     <Admin>true</Admin>
   </Usuario>
+  <Usuario>
+    <Id>8</Id>
+    <Nome>LuanaSalmito</Nome>
+    <Senha>tads</Senha>
+    <Admin>true</Admin>
+  </Usuario>
 </ArrayOfUsuario>

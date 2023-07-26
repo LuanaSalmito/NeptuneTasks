@@ -103,5 +103,15 @@ public class NUsuario
         }
         return false;
     }
-
+    public static Usuario ListarUsuarioPorNome(string nome)
+    {
+        foreach (Usuario usuario in usuarios)
+        {
+            if (usuario.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase))
+            {
+                return usuario;
+            }
+        }
+        return null;
+    }
 }

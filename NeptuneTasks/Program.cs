@@ -38,13 +38,14 @@ namespace NeptuneTasks
                     {
                         if (usuarioLogado.Admin == true)
                         {
-                            operacao = MenuAdmin();
+                            operacao = MenuAdm();
                             switch (operacao)
                             {
 
 
-                                case 1: MenuTarefasL(); break;
+                                case 1: MenuTarefasP(); break;
                                 case 2: MenuEquipesLider(); break;
+                                case 3: EnviarTarefa(); break;
                                 case 99: SairSistema(); break;
                                 case 98: AtualizarConta(usuarioLogado); break;
 
@@ -97,7 +98,7 @@ namespace NeptuneTasks
             Console.Write("\nOpção: ");
             return int.Parse(Console.ReadLine()); ;
         }
-        public static int MenuAdmin()
+        public static int MenuAdm()
         {
             //Menu para usuário que são lideres.
 
@@ -108,9 +109,8 @@ namespace NeptuneTasks
             Console.WriteLine("|  Escolha a operação desejada:            |");
             Console.WriteLine("|                                          |");
             Console.WriteLine("|  1. Área de tarefas pessoais             |");
-            Console.WriteLine("|  2. Área de tarefas da equipe            |");
-            Console.WriteLine("|  3. Área de equipes                      |");
-            Console.WriteLine("|  4. Área de projetos                     |");
+            Console.WriteLine("|  2. Área de equipe                       |");
+            Console.WriteLine("|  3. Enviar tarefa ao colaborador         |");
             Console.WriteLine("********************************************");
             Console.WriteLine("|  98. Atualizar conta                     |");
             Console.WriteLine("|  99. Sair                                |");
@@ -127,12 +127,12 @@ namespace NeptuneTasks
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("********************************************");
-                Console.WriteLine("|         Quadro de tarefas pessoais       |");
+                Console.WriteLine("|        Quadro de tarefas da equipe       |");
                 Console.WriteLine("********************************************");
                 Console.WriteLine("|  Escolha a operação desejada:            |");
                 Console.WriteLine("|                                          |");
                 Console.WriteLine("|  1. Visualizar tarefas existentes        |");
-                Console.WriteLine("|  2. Adicionar tarefa                     |");
+                Console.WriteLine("|  2. Atribir tarefa a um colaborador      |");
                 Console.WriteLine("|  3. Excluir tarefa                       |");
                 Console.WriteLine("|  4. Voltar                               |");
                 Console.WriteLine("********************************************");
@@ -141,11 +141,11 @@ namespace NeptuneTasks
 
                 switch (opcao)
                 {
-                    case 1:
-                        MostrarTarefasPessoais();
-                        break;
+                    /*case 1:
+                        MostrarTarefasEquipe();
+                        break;*/
                     case 2:
-                        CriarTarefa();
+                        EnviarTarefa();
                         break;
                     case 3:
                         ExcluirTarefa();
@@ -154,7 +154,7 @@ namespace NeptuneTasks
 
                     case 4:
                         continuar = false;
-                        MenuAdmin();
+                        MenuAdm();
                         break;
 
                     default:
@@ -832,8 +832,48 @@ namespace NeptuneTasks
                     Console.WriteLine("***************************");
                 }
           }
+        public static void EnviarTarefa()
+        {
+            Console.WriteLine("**********************************");
+            Console.WriteLine("|     Enviar Tarefa a Usuário    |");
+            Console.WriteLine("**********************************");
 
-        
+            // Solicitar o nome da tarefa a ser enviada
+            Console.WriteLine("Digite o nome da tarefa a ser enviada: ");
+            string nomeTarefa = Console.ReadLine();
+
+            // Localizar a tarefa pelo nome fornecido
+            Tarefa tarefa = NTarefa.Listar(nomeTarefa);
+
+            if (tarefa == null)
+            {
+                Console.WriteLine("Tarefa não encontrada. Verifique o nome e tente novamente.");
+                return;
+            }
+
+            // Solicitar o nome do destinatário
+            Console.WriteLine("Digite o nome do destinatário da tarefa: ");
+            string nomeDestinatario = Console.ReadLine();
+
+            // Localizar o usuário destinatário pelo nome fornecido
+            Usuario destinatario = NUsuario.ListarUsuarioPorNome(nomeDestinatario);
+
+            if (destinatario == null)
+            {
+                Console.WriteLine("Usuário destinatário não encontrado. Verifique o nome e tente novamente.");
+                return;
+            }
+
+            // Atualizar o IdUsuario da tarefa com o Id do destinatário
+            tarefa.IdUsuario = destinatario.Id;
+
+            // Salvar as alterações no arquivo XML
+            NTarefa.Salvar();
+
+            Console.WriteLine("Tarefa enviada com sucesso para o usuário " + destinatario.Nome);
+        }
+
+
 
 
     }
