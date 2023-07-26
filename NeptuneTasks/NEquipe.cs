@@ -8,86 +8,112 @@ using System.Xml.Serialization;
 
 public class NEquipe
 {
-    private static List<Equipe> Equipes = new List<Equipe>();
-
-
+    public static List<Equipe> equipes = new List<Equipe>();
+    public static List<Equipe> Equipes
+    {
+        get { return equipes; }
+    }
     public static void Abrir()
     {
         XmlSerializer xml = new XmlSerializer(typeof(List<Equipe>));
         StreamReader reader = null;
         try
         {
-            reader = new StreamReader("Equipes.xml");
-            Equipes = (List<Equipe>)xml.Deserialize(reader);
+            reader = new StreamReader("equipes.xml");
+            equipes = (List<Equipe>)xml.Deserialize(reader);
         }
         catch
         {
-            Equipes = new List<Equipe>();
+            equipes = new List<Equipe>();
         }
         finally
         {
             if (reader != null) reader.Close();
         }
     }
+
     public static void Salvar()
     {
         XmlSerializer xml = new XmlSerializer(typeof(List<Equipe>));
-        using (StreamWriter writer = new StreamWriter("Equipes.xml"))
+        using (StreamWriter writer = new StreamWriter("equipes.xml"))
         {
-            xml.Serialize(writer, Equipes);
+            xml.Serialize(writer, equipes);
         }
     }
-    public static Equipe Listar(string Nome)
+
+    public static Equipe Listar(int idEquipe)
     {
-        foreach (Equipe obj in Equipes)
-            if (obj.NomeEquipe == Nome) return obj;
+        foreach (Equipe equipe in equipes)
+        {
+            if (equipe.idEquipe == idEquipe)
+            {
+                return equipe;
+            }
+        }
         return null;
     }
-    /* public static Equipe ListarEquipesUsuario(Usuario u)
-     {
-         foreach (Equipe obj in Equipes)
-             if (obj.User = u.Id) return obj;
-         return null;
-     }*/
 
-    public static void Excluir(Equipe t)
+    public static void Excluir(Equipe equipe)
     {
-        Equipe obj = Listar(t.NomeEquipe);
-        if (obj != null) Equipes.Remove(obj);
-    }
-    public static void Inserir(Equipe equipe, Usuario usuariocriador, string descricao) // Recebe também o ID do usuário associado à Equipe
-    {
-        int id = 0;
-        foreach (Equipe obj in Equipes)
-            if (obj.idEquipe > id) id = obj.idEquipe;
-        id++;
-
-        equipe.idEquipe = id;
-        equipe.admin = usuariocriador; // Associa o usuário criador como o administrador da equipe
-        equipe.descricao = descricao; // Define a descrição da equipe
-
-        // Se a lista de membros não tiver sido inicializada, crie uma nova lista vazia
-        if (equipe.Membros == null)
-            equipe.Membros = new List<Usuario>();
-
-        // Adicione o usuário criador como membro da equipe
-        equipe.Membros.Add(usuariocriador);
-
-        Equipes.Add(equipe);
-    }
-}
-    /*public static List<Equipe> ListarEquipesUsuario(Usuario usuario)
-    {
-        List<Equipe> EquipesUsuario = new List<Equipe>();
-
-        foreach (Equipe Equipe in Equipes)
+        Equipe obj = Listar(equipe.idEquipe);
+        if (obj != null)
         {
-            if (Equipe.IdUsuario == usuario.Id)
+            equipes.Remove(obj);
+        }
+    }
+
+    public static void Inserir(Equipe equipe)
+    {
+        // Verifica se a equipe já existe pelo seu idEquipe
+        if (Listar(equipe.idEquipe) == null)
+        {
+            equipes.Add(equipe);
+        }
+        else
+        {
+            // Caso a equipe já exista, atualiza os dados da equipe
+            Atualizar(equipe);
+        }
+    }
+
+    public static void Atualizar(Equipe equipe)
+    {
+        Equipe obj = Listar(equipe.idEquipe);
+        if (obj != null)
+        {
+            // Atualiza os dados da equipe com os novos valores
+            obj.NomeEquipe = equipe.NomeEquipe;
+            obj.admin = equipe.admin;
+            obj.descricao = equipe.descricao;
+            obj.Membros = equipe.Membros;
+        }
+    }
+    public static int GerarNovoIdEquipe()
+    {
+        int maiorId = 0;
+        foreach (Equipe equipe in equipes)
+        {
+            if (equipe.idEquipe > maiorId)
             {
-                EquipesUsuario.Add(Equipe);
+                maiorId = equipe.idEquipe;
+            }
+        }
+        return maiorId + 1; // Incrementa 1 ao maior ID encontrado para obter o novo ID da equipe
+    }
+    public static List<Equipe> ListarEquipeAdmin(Usuario usuario)
+    {
+        List<Equipe> equipesUsuario = new List<Equipe>();
+
+        foreach (Equipe equipe in NEquipe.Equipes)
+        {
+            if (equipe.admin == usuario)
+            {
+                equipesUsuario.Add(equipe);
             }
         }
 
-        return EquipesUsuario;
-    }*/
+        return equipesUsuario;
+    }
+
+}
 

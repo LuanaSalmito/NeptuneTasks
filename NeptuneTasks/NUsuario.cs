@@ -81,5 +81,27 @@ public class NUsuario
         }
         return false;
     }
+    public static bool procuraUsuarioParaEquipe(Usuario u)
+    {
+        foreach (Usuario obj in usuarios)
+        {
+            if (obj.Nome == u.Nome)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static bool procuraSeAdmin(Usuario u)
+    {
+        foreach (Usuario obj in usuarios)
+        {
+            if (obj.Admin == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

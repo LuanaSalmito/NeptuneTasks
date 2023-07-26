@@ -30,4 +30,16 @@
     <Senha>tads</Senha>
     <Admin>true</Admin>
   </Usuario>
+  <Usuario>
+    <Id>6</Id>
+    <Nome>RafaelSilveira</Nome>
+    <Senha>tads</Senha>
+    <Admin>true</Admin>
+  </Usuario>
+  <Usuario>
+    <Id>7</Id>
+    <Nome>GilbertAzevedo</Nome>
+    <Senha>tads</Senha>
+    <Admin>true</Admin>
+  </Usuario>
 </ArrayOfUsuario>

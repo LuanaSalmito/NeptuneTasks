@@ -21,4 +21,25 @@
     <Prioridade>3</Prioridade>
     <IdUsuario>6</IdUsuario>
   </Tarefa>
+  <Tarefa>
+    <IdTarefa>5</IdTarefa>
+    <Titulo>Estudar para redes</Titulo>
+    <Descricao>Estudar pela aula 17 disponivel no suap</Descricao>
+    <Prioridade>2</Prioridade>
+    <IdUsuario>6</IdUsuario>
+  </Tarefa>
+  <Tarefa>
+    <IdTarefa>6</IdTarefa>
+    <Titulo>Comprar monster</Titulo>
+    <Descricao>Após o almoço, para estudar</Descricao>
+    <Prioridade>1</Prioridade>
+    <IdUsuario>6</IdUsuario>
+  </Tarefa>
+  <Tarefa>
+    <IdTarefa>7</IdTarefa>
+    <Titulo>Preparar documentação do projeto de POO</Titulo>
+    <Descricao>Fazer um README.md e um pdf</Descricao>
+    <Prioridade>3</Prioridade>
+    <IdUsuario>6</IdUsuario>
+  </Tarefa>
 </ArrayOfTarefa>

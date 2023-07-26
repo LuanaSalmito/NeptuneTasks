@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEquipe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Equipe>
+    <NomeEquipe>2022.2 tads</NomeEquipe>
+    <admin>
+      <Id>7</Id>
+      <Nome>GilbertAzevedo</Nome>
+      <Senha>tads</Senha>
+      <Admin>true</Admin>
+    </admin>
+    <idEquipe>1</idEquipe>
+    <descricao>Alunos poo</descricao>
+    <Membros>
+      <Usuario>
+        <Id>7</Id>
+        <Nome>GilbertAzevedo</Nome>
+        <Senha>tads</Senha>
+        <Admin>true</Admin>
+      </Usuario>
+      <Usuario>
+        <Id>0</Id>
+        <Nome>RafaelSilveira</Nome>
+        <Admin>false</Admin>
+      </Usuario>
+    </Membros>
+  </Equipe>
+  <Equipe>
+    <NomeEquipe>sgfa</NomeEquipe>
+    <admin>
+      <Id>7</Id>
+      <Nome>GilbertAzevedo</Nome>
+      <Senha>tads</Senha>
+      <Admin>true</Admin>
+    </admin>
+    <idEquipe>2</idEquipe>
+    <descricao>fasfa</descricao>
+    <Membros>
+      <Usuario>
+        <Id>7</Id>
+        <Nome>GilbertAzevedo</Nome>
+        <Senha>tads</Senha>
+        <Admin>true</Admin>
+      </Usuario>
+    </Membros>
+  </Equipe>
+</ArrayOfEquipe>

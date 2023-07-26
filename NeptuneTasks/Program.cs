@@ -15,6 +15,7 @@ namespace NeptuneTasks
             //Necessáio para carregar a persistência dos usuários.
             NUsuario.Abrir();
             NTarefa.Abrir();
+            NEquipe.Abrir();
             //
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("\n       Bem-vindo(a) ao NeptuneTasks!\n");
@@ -42,7 +43,8 @@ namespace NeptuneTasks
                             {
 
 
-                                case 1: MenuTarefasL(); break;    
+                                case 1: MenuTarefasL(); break;
+                                case 2: MenuEquipesLider(); break;
                                 case 99: SairSistema(); break;
                                 case 98: AtualizarConta(usuarioLogado); break;
 
@@ -75,6 +77,7 @@ namespace NeptuneTasks
             //Necessário para salvar perisistências dos usuários.
             NUsuario.Salvar();
             NTarefa.Salvar();
+            NEquipe.Salvar();
             
         }
 
@@ -151,6 +154,7 @@ namespace NeptuneTasks
 
                     case 4:
                         continuar = false;
+                        MenuAdmin();
                         break;
 
                     default:
@@ -160,7 +164,48 @@ namespace NeptuneTasks
             }
 
         }
-        public static void MenuEquipes()
+         public static void MenuEquipes()
+        {
+            bool continuar = true;
+            while (continuar)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("********************************************");
+                Console.WriteLine("|            Quadro de equipes             |");
+                Console.WriteLine("********************************************");
+                Console.WriteLine("|  Escolha a operação desejada:            |");
+                Console.WriteLine("|                                          |");
+                Console.WriteLine("|  1. Visualizar equipe                    |");
+                Console.WriteLine("|  4. Voltar                               |");
+                Console.WriteLine("********************************************");
+                Console.Write("\nOpção: ");
+                int opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    /*case 1:
+                        MostrarEquipes();
+                        break;*/
+                    /*case 2:
+                        CriarEquipe();
+                        break;*/
+                    /*case 3:
+                        ExcluirTarefa();
+
+                        break;*/
+
+                      case 4:
+                        continuar = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+
+        }
+        static public void MenuEquipesLider()
         {
             bool continuar = true;
             while (continuar)
@@ -181,12 +226,12 @@ namespace NeptuneTasks
 
                 switch (opcao)
                 {
-                    /*case 1:
-                        MostrarEquipes();
-                        break;*/
-                    /*case 2:
+                    case 1:
+                        ListarEquipes();
+                        break;
+                      case 2:
                         CriarEquipe();
-                        break;*/
+                        break;
                     /*case 3:
                         ExcluirTarefa();
 
@@ -201,6 +246,7 @@ namespace NeptuneTasks
                         break;
                 }
             }
+
 
         }
 
@@ -690,77 +736,115 @@ namespace NeptuneTasks
             MenuTarefasP();
         }
 
-        /*public static void CriarEquipe(Usuario criador, List<Usuario> usuariosDisponiveis, string )
+        public static void CriarEquipe()
         {
-            Console.WriteLine("***************************");
-            Console.WriteLine("|   Criar nova Equipe     |");
-            Console.WriteLine("***************************");
+            Console.WriteLine("*********************************");
+            Console.WriteLine("|        Criar nova Equipe      |");
+            Console.WriteLine("*********************************");
 
             // Coleta o nome da equipe do usuário
             Console.WriteLine("Digite o nome da equipe: ");
+            Console.WriteLine("|                                          |");
             string nomeEquipe = Console.ReadLine();
+            Console.WriteLine("|                                          |");
 
             // Coleta a descrição da equipe do usuário
             Console.WriteLine("Digite a descrição da equipe: ");
+            Console.WriteLine("|                                          |");
             string descricaoEquipe = Console.ReadLine();
+            Console.WriteLine("|                                          |");
 
             // Cria uma nova equipe e preenche os atributos com os valores informados pelo usuário
             Equipe novaEquipe = new Equipe
             {
+                idEquipe = NEquipe.GerarNovoIdEquipe(),
                 NomeEquipe = nomeEquipe,
                 descricao = descricaoEquipe,
-                admin = criador,
+                admin = usuarioLogado,
                 Membros = new List<Usuario>() // Inicializa a lista de membros vazia para a nova equipe
             };
 
             // Adiciona o criador da equipe como membro
-            novaEquipe.Membros.Add(criador);
+            novaEquipe.Membros.Add(usuarioLogado);
 
-            // Exibe os usuários disponíveis para adicionar à equipe
-            Console.WriteLine("Usuários disponíveis para adicionar à equipe:");
+            // Pergunta quantos usuários o usuário deseja adicionar à equipe
+            Console.Write("Quantos usuários deseja adicionar à equipe? ");
+            Console.WriteLine("|                                          |");
+            int quantidadeMembros = int.Parse(Console.ReadLine());
 
-            foreach (Usuario usuario in usuariosDisponiveis)
+            // Loop para obter os nomes dos membros e adicioná-los à equipe
+            for (int i = 0; i < quantidadeMembros; i++)
             {
-                Console.WriteLine($"- {usuario.Nome}");
-            }
+                Console.Write($"Digite o nome do usuário {i + 1}: ");
+                string nomeUsuario = Console.ReadLine();
 
-            // Solicita ao usuário o nome do membro que deseja adicionar
-            Console.WriteLine("Digite o nome do usuário que deseja adicionar à equipe: ");
-            string nomeUsuario = Console.ReadLine();
+                // Cria um novo objeto Usuario com o nome informado pelo usuário
+                Usuario membro = new Usuario
+                {
+                    Nome = nomeUsuario
+                };
 
-            // Procura o usuário na lista de usuários disponíveis pelo nome
-            Usuario membro = usuariosDisponiveis.FirstOrDefault(u => u.Nome.Equals(nomeUsuario, StringComparison.OrdinalIgnoreCase));
-
-            if (membro != null)
-            {
                 // Verifica se o usuário já é um membro da equipe
-                if (!novaEquipe.Membros.Contains(membro))
+                if (NUsuario.procuraUsuarioParaEquipe(membro))
                 {
                     // Adiciona o usuário como membro da equipe
                     novaEquipe.Membros.Add(membro);
+                    Console.WriteLine("|                                          |");
                     Console.WriteLine($"{membro.Nome} adicionado à equipe {novaEquipe.NomeEquipe} com sucesso!");
+                    Console.WriteLine("|                                          |");
                 }
                 else
                 {
-                    Console.WriteLine($"{membro.Nome} já é membro da equipe {novaEquipe.NomeEquipe}.");
+                    Console.WriteLine("Usuário não encontrado. Verifique o nome e tente novamente.");
                 }
-            }
-            else
-            {
-                Console.WriteLine("Usuário não encontrado. Verifique o nome e tente novamente.");
             }
 
             // Agora, você pode chamar o método Inserir do NEquipe para adicionar a nova equipe à lista de equipes
-            NEquipe.Inserir(novaEquipe, criador, idProjeto);
-
+            NEquipe.Inserir(novaEquipe);
+            NEquipe.Salvar();
             Console.WriteLine("Equipe criada com sucesso!");
-        }*/
+        }
+        
+        
+         public static void ListarEquipes()
+            {
+                Console.WriteLine("********************************");
+                Console.WriteLine("|       Equipes do Admin       |");
+                Console.WriteLine("********************************");
+
+                List<Equipe> equipesAdmin = NEquipe.ListarEquipeAdmin(usuarioLogado);
+
+                // Loop para percorrer todas as equipes do administrador
+                foreach (Equipe equipe in equipesAdmin)
+                {
+                    Console.WriteLine($"ID: {equipe.idEquipe}");
+                    Console.WriteLine($"Nome da Equipe: {equipe.NomeEquipe}");
+                    Console.WriteLine($"Descrição: {equipe.descricao}");
+                    Console.WriteLine($"Admin: {equipe.admin.Nome}");
+                    Console.WriteLine("Membros:");
+
+                    // Lista os membros da equipe
+                    foreach (Usuario membro in equipe.Membros)
+                    {
+                        Console.WriteLine($"- {membro.Nome}");
+                    }
+
+                    Console.WriteLine("***************************");
+                }
+          }
+
+        
 
 
     }
 
 
-}
+
+
+    }
+
+
+
 
 
 
