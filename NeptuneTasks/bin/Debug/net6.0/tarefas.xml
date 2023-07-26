@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTarefa xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tarefa>
+    <IdTarefa>1</IdTarefa>
+    <Titulo>Estudar polimorfismo</Titulo>
+    <Descricao>Para o trabalho de poo</Descricao>
+    <Prioridade>3</Prioridade>
+    <IdUsuario>6</IdUsuario>
+  </Tarefa>
+  <Tarefa>
+    <IdTarefa>3</IdTarefa>
+    <Titulo>Fazer trabalho de redes</Titulo>
+    <Descricao>TCP, UDP e protocolo http</Descricao>
+    <Prioridade>2</Prioridade>
+    <IdUsuario>7</IdUsuario>
+  </Tarefa>
+  <Tarefa>
+    <IdTarefa>4</IdTarefa>
+    <Titulo>Estudar herança</Titulo>
+    <Descricao>Para ajudar na contrução das classes</Descricao>
+    <Prioridade>3</Prioridade>
+    <IdUsuario>6</IdUsuario>
+  </Tarefa>
+</ArrayOfTarefa>

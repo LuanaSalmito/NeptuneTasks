@@ -61,13 +61,25 @@ public class NUsuario
             usuarios = (List<Usuario>)xml.Deserialize(reader);
         }
         catch
-        {
+        { 
             usuarios = new List<Usuario>();
         }
         finally
         {
             if (reader != null) reader.Close();
         }
+    }
+    
+    public static bool procuraNomeIgual(Usuario u)
+    {
+        foreach (Usuario obj in usuarios)
+        {
+            if(obj.Nome == u.Nome)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

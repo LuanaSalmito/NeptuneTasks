@@ -30,4 +30,16 @@
     <Senha>tads</Senha>
     <Admin>true</Admin>
   </Usuario>
+  <Usuario>
+    <Id>6</Id>
+    <Nome>Caue</Nome>
+    <Senha>Salmito</Senha>
+    <Admin>false</Admin>
+  </Usuario>
+  <Usuario>
+    <Id>7</Id>
+    <Nome>LuanaSalmito</Nome>
+    <Senha>tads</Senha>
+    <Admin>false</Admin>
+  </Usuario>
 </ArrayOfUsuario>
