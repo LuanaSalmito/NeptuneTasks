@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\NeptuneTasks"
   ],
-  "SelectedNode": "\\NTarefa.cs",
+  "SelectedNode": "\\NeptuneTasks\\Program.cs",
   "PreviewInSolutionExplorer": true
 }
